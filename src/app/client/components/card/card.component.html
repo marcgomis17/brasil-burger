@@ -1,0 +1,15 @@
+<div class="card text-left">
+    <ng-container *ngIf="isComplement==true">
+        <div id="checkbox-container">
+            <input type="checkbox" id="card-checkbox">
+        </div>
+    </ng-container>
+    <img class="card-img" [src]="cardImg" alt="">
+    <div class="card-body">
+        <p class="card-title">Double cheeseburger</p>
+        <div id="card-bottom">
+            <p class="price-display">Body</p>
+            <a><button class="cart-add"><img [src]="cartAdd" alt="" class="btn-icon"></button></a>
+        </div>
+    </div>
+</div>
