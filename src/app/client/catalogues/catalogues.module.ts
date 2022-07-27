@@ -7,12 +7,11 @@ import { CatalogFilterComponent } from './components/catalog-filter/catalog-filt
 import { CardComponent } from './components/card/card.component';
 import { ClientSharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [
     CataloguesComponent,
     CatalogFilterComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     CommonModule,

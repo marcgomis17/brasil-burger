@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   search: FormControl = new FormControl();
-  logo: string = "assets/logo.png";
+  logo: string = "assets/images/logo.png";
   cart: string = "assets/icons/cart.svg";
 
   constructor() { }

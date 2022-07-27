@@ -2,7 +2,6 @@ header {
     background: #1a1a1a;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 1.1vh 0;
 
     #first-part,
     #second-part {
@@ -16,7 +15,7 @@ header {
 
     #logo {
         height: auto;
-        width: 70px;
+        width: 60px;
     }
 
     .nav {
