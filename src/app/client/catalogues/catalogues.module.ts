@@ -6,12 +6,14 @@ import { CataloguesComponent } from './catalogues.component';
 import { CatalogFilterComponent } from './components/catalog-filter/catalog-filter.component';
 import { CardComponent } from './components/card/card.component';
 import { ClientSharedModule } from '../shared/shared.module';
+import { ListeProduitsComponent } from './components/liste-produits/liste-produits.component';
 
 @NgModule({
   declarations: [
     CataloguesComponent,
     CatalogFilterComponent,
     CardComponent,
+    ListeProduitsComponent,
   ],
   imports: [
     CommonModule,

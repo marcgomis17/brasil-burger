@@ -1,0 +1,10 @@
+#list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    column-gap: 4%;
+
+    mog-card {
+        margin-top: 8vh;
+    }
+}
