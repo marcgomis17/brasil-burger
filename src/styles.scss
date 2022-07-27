@@ -1,1 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.card {
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+}
+
+.button {
+    height: 40px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.btn-icon {
+    filter: invert(100%) sepia(3%) saturate(13%) hue-rotate(88deg) brightness(102%) contrast(104%);
+    width: 15px;
+    height: auto;
+}
+
+.auth-card {
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    bottom: 2%;
+    width: 35%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .auth-separator {
+        margin: 5vh 0;
+    }
+
+    .auth-card-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .auth-text {
+        color: #757575;
+        margin-bottom: 0;
+    }
+
+    .auth-link {
+        font-weight: 700;
+        margin-top: 1vh;
+        font-size: large;
+        color: #787878;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+}
