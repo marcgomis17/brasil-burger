@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-register',
+  selector: 'mog-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
