@@ -1,0 +1,43 @@
+<div id="register-card" class="auth-card card">
+    <h3>Créer un compte</h3>
+    <form action="" method="post">
+        <div class="input-wrapper">
+            <input type="email" name="" class="form-control" id="email-field" [formControl]="prenom" placeholder="Prénom">
+            <span class="error-display"></span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="email" name="" class="form-control" id="email-field" [formControl]="nom" placeholder="Nom">
+            <span class="error-display"></span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="email" name="" class="form-control" id="email-field" [formControl]="email" placeholder="Adresse email">
+            <span class="error-display"></span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="password" name="" class="form-control" id="password-field" [formControl]="password" placeholder="Mot de passe">
+            <span class="error-display"></span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="password" name="" class="form-control" id="email-field" [formControl]="confirmPassword" placeholder="Confirmez votre mot de passe">
+            <span class="error-display"></span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="text" name="" class="form-control" id="email-field" [formControl]="adresse" placeholder="Adresse">
+            <span class="error-display"></span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="text" name="" class="form-control" id="email-field" [formControl]="phone" placeholder="Téléphone">
+            <span class="error-display"></span>
+        </div>
+        <div id="btn-wrapper">
+            <button type="submit" class="button submit-btn" id="submit-btn">Connexion</button>
+        </div>
+    </form>
+    <hr class="auth-separator">
+    <div id="login-zone" class="auth-card-footer">
+        <p id="login-text" class="auth-text">Vous avez déjà un compte ?</p>
+        <a routerLink="/auth/login">
+            <p id="login-link" class="auth-link">Connectez-vous</p>
+        </a>
+    </div>
+</div>
