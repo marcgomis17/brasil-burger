@@ -1,0 +1,28 @@
+<header class="fixed-top">
+    <div id="first-part">
+        <div id="icon-area">
+            <img [src]="logo" alt="" id="logo" routerLink="">
+        </div>
+        <nav class="navbar navbar-expand">
+            <ul class="nav navbar-nav">
+                <a class="nav-link" routerLink="">
+                    <li class="nav-item">Accueil</li>
+                </a>
+                <a class="nav-link" routerLink="/client/commandes">
+                    <li class="nav-item">Commandes</li>
+                </a>
+            </ul>
+        </nav>
+    </div>
+    <div id="second-part">
+        <form action="" method="post">
+            <input type="text" class="form-control" id="search-bar" placeholder="Rechercher..." [formControl]="search">
+        </form>
+        <div id="cart">
+            <a routerLink="/client/panier"><img [src]="cart" alt="" id="cart-btn"></a>
+        </div>
+        <ng-container>
+            <mog-avatar></mog-avatar>
+        </ng-container>
+    </div>
+</header>
