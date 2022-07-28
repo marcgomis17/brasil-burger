@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   exports: [
     HeaderComponent,
