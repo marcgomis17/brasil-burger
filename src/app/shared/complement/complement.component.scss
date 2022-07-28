@@ -1,0 +1,24 @@
+#complement-card {
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 7vw;
+    height: fit-content;
+
+    .card-img {
+        height: auto;
+        width: 100%;
+    }
+
+    .card-body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2% 4%;
+
+        .card-title {
+            margin: 0;
+            font-weight: 500;
+            color: #404040;
+        }
+    }
+}
