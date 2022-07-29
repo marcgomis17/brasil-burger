@@ -1,3 +1,5 @@
 <div id="products-list">
-
+    <ng-container *ngFor="let produit of produits">
+        <mog-card [produit]="produit"></mog-card>
+    </ng-container>
 </div>

@@ -19,6 +19,7 @@ import { ListeProduitsComponent } from './components/liste-produits/liste-produi
     CommonModule,
     CataloguesRoutingModule,
     ClientSharedModule
-  ]
+  ],
+  exports: []
 })
 export class CataloguesModule { }

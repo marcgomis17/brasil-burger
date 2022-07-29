@@ -1,6 +1,6 @@
 <mog-header></mog-header>
 <mog-catalog-filter></mog-catalog-filter>
-<div id="list-wrapper">
-    <!-- <mog-details-produit></mog-details-produit> -->
-</div>
+<mog-liste-produits [produits]="(catalogue$|async)?.burgers"></mog-liste-produits>
+<!-- <mog-details-produit></mog-details-produit> -->
+<!-- <router-outlet></router-outlet> -->
 <mog-footer></mog-footer>
