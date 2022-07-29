@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Produit } from 'src/app/client/shared/models/produit';
 
 @Component({
   selector: 'mog-card',
@@ -6,9 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
-  cardImg: string = "assets/images/card-img.svg";
-  cartAdd: string = "assets/icons/cart-add.svg";
-  isComplement: boolean = false;
+  @Input('produit') produit: Produit | null = null;
 
   constructor() { }
 
