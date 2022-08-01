@@ -1,6 +1,11 @@
 <mog-header></mog-header>
-<mog-catalog-filter></mog-catalog-filter>
-<mog-liste-produits [produits]="(catalogue$|async)?.burgers"></mog-liste-produits>
+<mog-catalog-filter (onSelectedItem)="setList($event)"></mog-catalog-filter>
+<ng-container *ngIf="selectedType==='burgers'">
+    <mog-liste-produits [produits]="(catalogue$|async)?.burgers"></mog-liste-produits>
+</ng-container>
+<ng-container *ngIf="selectedType==='menus'">
+    <mog-liste-produits [produits]="(catalogue$|async)?.menus"></mog-liste-produits>
+</ng-container>
 <!-- <mog-details-produit></mog-details-produit> -->
-<!-- <router-outlet></router-outlet> -->
+<router-outlet></router-outlet>
 <mog-footer></mog-footer>

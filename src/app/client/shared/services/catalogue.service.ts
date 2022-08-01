@@ -7,7 +7,7 @@ import { Catalogue } from '../models/catalogue';
   providedIn: 'root'
 })
 export class CatalogueService {
-  private _url = 'http://127.0.0.1:8000/api/catalogues'
+  private _url = "http://127.0.0.1:8000/api/catalogues";
 
   constructor(private _httpClient: HttpClient) { }
 

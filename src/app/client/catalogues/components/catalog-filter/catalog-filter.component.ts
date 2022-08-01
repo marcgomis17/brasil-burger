@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'mog-catalog-filter',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalog-filter.component.scss']
 })
 export class CatalogFilterComponent implements OnInit {
+  @Output() onSelectedItem: EventEmitter<string> = new EventEmitter();
+  produits: string = "burgers";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  filter(selectedItem: string): void {
+    this.onSelectedItem.emit(selectedItem);
+  }
 }

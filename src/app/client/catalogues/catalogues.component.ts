@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Catalogue } from '../shared/models/catalogue';
-import { Produit } from '../shared/models/produit';
 import { CatalogueService } from '../shared/services/catalogue.service';
 
 @Component({
@@ -11,11 +10,19 @@ import { CatalogueService } from '../shared/services/catalogue.service';
 })
 export class CataloguesComponent implements OnInit {
   catalogue$: Observable<Catalogue> | undefined = undefined;
-  produits: Produit[] = [];
+  selectedType: string = "burgers";
 
   constructor(private _catalogueService: CatalogueService) { }
 
   ngOnInit(): void {
     this.catalogue$ = this._catalogueService.getCatalogue();
+  }
+
+  setList(filterValue: string): void {
+    if (filterValue === "menus") {
+      this.selectedType = "menus";
+    } else {
+      this.selectedType = "burgers";
+    }
   }
 }
