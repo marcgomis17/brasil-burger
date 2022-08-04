@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produit } from 'src/app/client/shared/models/produit';
 
 @Component({
@@ -8,10 +8,18 @@ import { Produit } from 'src/app/client/shared/models/produit';
 })
 export class CardComponent implements OnInit {
   @Input('produit') produit: Produit | null = null;
+  @Output() onSelectedItem: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getDetails(id: number | undefined) {
+    this.onSelectedItem.emit(id);
+  }
+
+  addCart() {
+    console.log('Clicked!!!!');
+  }
 }

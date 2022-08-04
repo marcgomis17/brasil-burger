@@ -4,11 +4,13 @@ import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
+import { ComplementComponent } from './complement/complement.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ComplementComponent
   ],
   imports: [
     CommonModule,
@@ -18,6 +20,7 @@ import { FooterComponent } from './footer/footer.component';
   exports: [
     HeaderComponent,
     FooterComponent,
+    ComplementComponent,
     SharedModule
   ]
 })

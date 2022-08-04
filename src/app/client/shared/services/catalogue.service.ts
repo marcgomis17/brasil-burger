@@ -7,7 +7,7 @@ import { Catalogue } from '../models/catalogue';
   providedIn: 'root'
 })
 export class CatalogueService {
-  private _url = "http://127.0.0.1:8000/api/catalogues";
+  private _url = "http://127.0.0.1:8000/api/catalogues/1";
 
   constructor(private _httpClient: HttpClient) { }
 
@@ -15,8 +15,8 @@ export class CatalogueService {
     return this._httpClient.get<any>(this._url).pipe(
       map(res => {
         let catalogue: Catalogue = {
-          burgers: res['hydra:member'][0]["burgers"],
-          menus: res['hydra:member'][0]["menus"],
+          burgers: res["burgers"],
+          menus: res["menus"],
         }
         return catalogue;
       }),

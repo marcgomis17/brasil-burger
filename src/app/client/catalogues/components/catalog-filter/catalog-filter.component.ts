@@ -6,7 +6,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./catalog-filter.component.scss']
 })
 export class CatalogFilterComponent implements OnInit {
-  @Output() onSelectedItem: EventEmitter<string> = new EventEmitter();
+  @Output() onSelectedFilter: EventEmitter<string> = new EventEmitter();
   produits: string = "burgers";
 
   constructor() { }
@@ -15,6 +15,6 @@ export class CatalogFilterComponent implements OnInit {
   }
 
   filter(selectedItem: string): void {
-    this.onSelectedItem.emit(selectedItem);
+    this.onSelectedFilter.emit(selectedItem);
   }
 }

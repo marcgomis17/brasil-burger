@@ -1,10 +1,10 @@
-<div class="card text-left" data-id="">
-    <img class="card-img" src="data:image/png;base64,{{produit?.image}}" alt="">
+<div class="card text-left" (click)="getDetails(produit?.id)">
+    <img class="card-img" src="data:image/png;base64,{{produit?.image}}" routerLink="details/{{produit?.id}}">
     <div class="card-body">
-        <p class="card-title">{{produit?.nom}}</p>
+        <p class="card-title" routerLink="details/{{produit?.id}}">{{produit?.nom}}</p>
         <div id="card-bottom">
             <p class="price-display">{{produit?.prix}}</p>
-            <a><button class="cart-add"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"></button></a>
+            <button class="cart-add" (click)="addCart()"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"></button>
         </div>
     </div>
 </div>

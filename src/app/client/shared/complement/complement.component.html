@@ -1,0 +1,12 @@
+<div id="complement-card">
+    <img class="card-img" src="data:image/png;base64,{{complement?.image}}" alt="">
+    <div class="card-body">
+        <ng-container *ngIf="prix===null">
+            <p class="card-title">{{complement?.prix|currency:'XOF'}}</p>
+        </ng-container>
+        <ng-container *ngIf="prix!==null">
+            <p class="card-title">{{prix|currency:'XOF'}}</p>
+        </ng-container>
+        <input type="checkbox" id="card-checkbox">
+    </div>
+</div>

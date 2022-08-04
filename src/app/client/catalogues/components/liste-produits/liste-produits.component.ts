@@ -7,7 +7,8 @@ import { Produit } from 'src/app/client/shared/models/produit';
   styleUrls: ['./liste-produits.component.scss']
 })
 export class ListeProduitsComponent implements OnInit {
-  @Input('produits') produits: Produit[] | undefined = [];
+  @Input() produits: Produit[] | any = [];
+  @Input() listType: string = "";
 
   constructor() { }
 

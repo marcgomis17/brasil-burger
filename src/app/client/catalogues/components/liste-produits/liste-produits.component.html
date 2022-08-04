@@ -1,5 +1,15 @@
 <div id="products-list">
     <ng-container *ngFor="let produit of produits">
-        <mog-card [produit]="produit"></mog-card>
+        <ng-container *ngIf="listType === 'produit'">
+            <mog-card [produit]="produit"></mog-card>
+        </ng-container>
+        <ng-container *ngIf="listType === 'complement'">
+            <ng-container *ngIf="produit['frites']">
+                <mog-complement [complement]="produit['frites']"></mog-complement>
+            </ng-container>
+            <ng-container *ngIf="!produit['frites']">
+                <mog-complement [complement]="produit"></mog-complement>
+            </ng-container>
+        </ng-container>
     </ng-container>
 </div>

@@ -3,9 +3,12 @@
     border-radius: 5px;
     width: 7vw;
     height: fit-content;
+    margin-top: 3vh;
 
     .card-img {
-        height: auto;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        height: 15vh;
         width: 100%;
     }
 
@@ -17,6 +20,7 @@
 
         .card-title {
             margin: 0;
+            font-size: large;
             font-weight: 500;
             color: #404040;
         }
