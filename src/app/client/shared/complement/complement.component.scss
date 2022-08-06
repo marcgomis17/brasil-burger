@@ -1,7 +1,14 @@
 #complement-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#complement-content-wrapper {
     border: 1px solid black;
     border-radius: 5px;
-    width: 7vw;
+    width: 8vw;
     height: fit-content;
     margin-top: 3vh;
 
