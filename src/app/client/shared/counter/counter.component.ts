@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'mog-counter',
@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./counter.component.scss']
 })
 export class CounterComponent implements OnInit {
-  amount: number = 1;
+  amount: number = 0;
+  @Output() amountChanged: EventEmitter<number> = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit() {
@@ -14,13 +16,15 @@ export class CounterComponent implements OnInit {
 
   increase() {
     this.amount += 1;
+    this.amountChanged.emit(this.amount);
   }
 
   decrease() {
-    if (this.amount <= 1) {
+    if (this.amount <= 0) {
       this.amount == 1;
     } else {
       this.amount -= 1;
     }
+    this.amountChanged.emit(this.amount);
   }
 }

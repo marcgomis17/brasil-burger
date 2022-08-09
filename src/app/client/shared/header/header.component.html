@@ -18,8 +18,9 @@
         <form action="" method="post">
             <input type="text" class="form-control" id="search-bar" placeholder="Rechercher..." [formControl]="search">
         </form>
-        <div id="cart">
-            <a routerLink="/client/panier"><img [src]="cart" alt="" id="cart-btn"></a>
+        <div id="cart" routerLink="/client/panier">
+            <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            <img [src]="cart" alt="" id="cart-btn">
         </div>
         <ng-container>
             <mog-avatar></mog-avatar>

@@ -8,6 +8,7 @@ import { CardComponent } from './components/card/card.component';
 import { ClientSharedModule } from '../shared/shared.module';
 import { ListeProduitsComponent } from './components/liste-produits/liste-produits.component';
 import { DetailProduitComponent } from './components/detail-produit/detail-produit.component';
+import { CounterComponent } from '../shared/counter/counter.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { DetailProduitComponent } from './components/detail-produit/detail-produ
     CatalogFilterComponent,
     CardComponent,
     ListeProduitsComponent,
-    DetailProduitComponent
+    DetailProduitComponent,
   ],
   imports: [
     CommonModule,

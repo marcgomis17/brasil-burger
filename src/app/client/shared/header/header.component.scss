@@ -39,9 +39,18 @@ header {
         border-radius: 50px;
     }
 
+    #cart {
+        width: fit-content;
+        margin-right: 5%;
+    }
+
+    #cart:hover {
+        cursor: pointer;
+    }
+
     #cart-btn {
         height: auto;
-        width: 40px;
+        width: 50px;
         filter: invert(74%) sepia(9%) saturate(0%) hue-rotate(140deg) brightness(103%) contrast(79%);
     }
 }

@@ -21,5 +21,6 @@ export class DetailProduitComponent implements OnInit {
       })
     ).subscribe();
     this.details$ = this._detailService.getDetails(this.id);
+    this.details$.subscribe(console.log);
   }
 }

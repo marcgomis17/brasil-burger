@@ -1,5 +1,6 @@
 import { MenuTaille } from "./menuTaille";
 import { MenuFrite } from "./menuFrite";
+import { MenuBurger } from "./menuBurger";
 
 export interface Produit {
     type?: string;
@@ -7,12 +8,7 @@ export interface Produit {
     nom: string;
     prix: number;
     image: string;
-    menuBurgers?: [
-        {
-            quantite: number;
-            burger: Produit;
-        }
-    ];
+    menuBurgers?: MenuBurger[];
     menuFrites?: MenuFrite[];
     menuTailles?: MenuTaille[];
 }

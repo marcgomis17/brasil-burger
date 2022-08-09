@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produit } from 'src/app/client/shared/models/produit';
 
 @Component({
@@ -9,10 +9,15 @@ import { Produit } from 'src/app/client/shared/models/produit';
 export class ComplementComponent implements OnInit {
   @Input() complement: Produit | null = null;
   @Input() prix?: number | null = null;
+  @Input() id: number | undefined = undefined;
+  @Output() amountChanged: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  verify(amount: number) {
+    this.amountChanged.emit(amount);
+  }
 }

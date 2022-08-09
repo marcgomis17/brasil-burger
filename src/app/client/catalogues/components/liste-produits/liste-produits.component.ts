@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produit } from 'src/app/client/shared/models/produit';
 
 @Component({
@@ -9,9 +9,15 @@ import { Produit } from 'src/app/client/shared/models/produit';
 export class ListeProduitsComponent implements OnInit {
   @Input() produits: Produit[] | any = [];
   @Input() listType: string = "";
+  @Input() prix?: number | null = null;
+  @Output() amountChanged: EventEmitter<number> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  getAmount(amount: number) {
+    this.amountChanged.emit(amount);
   }
 }

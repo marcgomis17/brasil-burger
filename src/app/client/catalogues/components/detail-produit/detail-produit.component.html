@@ -2,16 +2,17 @@
   <mog-header></mog-header>
   <div id="detail-wrapper">
     <ng-container *ngIf="(details$|async) as details">
+      <!-- <pre>{{(details)|json}}</pre> -->
       <ng-container *ngIf="details.produit as produit">
-        <div id="detail-part">
+        <div id="product-display">
           <div id="img-wrapper">
             <img id="product-img" src="data:image/png;base64,{{produit?.image}}" alt="">
           </div>
-          <div id="card-title">
-            <h3>{{produit?.nom}}</h3>
+          <div id="product-infos">
+            <h3 id="product-name">{{produit.nom}}</h3>
             <h4 id="price">{{produit?.prix|currency : 'XOF'}}</h4>
-            <ng-container *ngIf="(produit['@type']|lowercase)==='menu'">
-              <div id="menu-composition">
+            <ng-container *ngIf="produit.type==='menu'">
+              <div id="composition-display">
                 <h6>Composition</h6>
                 <ul>
                   <ng-container *ngFor="let menuBurger of produit.menuBurgers">
@@ -21,49 +22,52 @@
                     <li>{{menuFrites.quantite}} Portion frite {{menuFrites.frites.nom|lowercase}}</li>
                   </ng-container>
                   <ng-container *ngFor="let menuTaille of produit.menuTailles">
-                    <li>{{menuTaille.quantite}} Boisson {{menuTaille['tailles']['libelle']|lowercase}}</li>
+                    <li>{{menuTaille.quantite}} Boisson {{menuTaille.tailles.libelle|lowercase}}</li>
                   </ng-container>
                 </ul>
               </div>
             </ng-container>
           </div>
-          <ng-container *ngIf="(produit['@type']|lowercase)==='menu'">
-            <div id="menu-complements">
-              <div class="c-display">
-                <h6>Boissons</h6>
-                <ng-container *ngFor="let menuTaille of details['produit']['menuTailles']">
-                  <mog-liste-produits [listType]="'complement'" [produits]="menuTaille['tailles']['boissons']" class="list"></mog-liste-produits>
+          <div id="complements">
+            <div class="c-display">
+              <h5>Boissons</h5>
+              <ng-container *ngIf="produit.type==='menu'">
+                <ng-container *ngFor="let menuTaille of produit.menuTailles">
+                  <div class="boisson-display">
+                    <span class="amount-display"><span id="libelle">{{menuTaille.tailles.libelle}}</span>: <span id="quantite">{{menuTaille.quantite}}</span></span>
+                    <mog-liste-produits [listType]="'complement'" [produits]="menuTaille.tailles.boissons" [prix]="menuTaille.tailles.prix" (amountChanged)="getAmount($event)" class="list"></mog-liste-produits>
+                  </div>
                 </ng-container>
-              </div>
-              <div class="c-display">
-                <h6>Frites</h6>
-                <div class="list">
-                  <mog-liste-produits [listType]="'complement'" [produits]="details['produit']['menuFrites']" class="list"></mog-liste-produits>
-                </div>
-              </div>
+              </ng-container>
+              <ng-container *ngIf="produit.type==='burger'">
+                <mog-liste-produits [listType]="'complement'" [produits]="details.boissons" class="list"></mog-liste-produits>
+              </ng-container>
             </div>
-          </ng-container>
+            <div class="c-display">
+              <h5>Frites</h5>
+              <ng-container *ngIf="produit.type==='menu'">
+                <div class="list" id="frites-list">
+                  <mog-liste-produits [listType]="'complement'" [produits]="details.produit.menuFrites" class="list"></mog-liste-produits>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="produit.type==='burger'">
+                <mog-liste-produits [listType]="'complement'" [produits]="details.frites" class="list"></mog-liste-produits>
+              </ng-container>
+            </div>
+          </div>
         </div>
-        <div id="others-wrapper">
-          <div class="others" id="others-boissons">
-            <ng-container *ngIf="(produit['@type']|lowercase)==='burger'">
-              <h5 id="others-title">Boissons</h5>
-            </ng-container>
-            <!-- <ng-container *ngIf="(produit['@type']|lowercase)==='menu'">
+        <ng-container *ngIf="produit.type==='menu'">
+          <div id="others-wrapper">
+            <div class="c-display">
               <h5 class="others-title">Autres boissons</h5>
-            </ng-container> -->
-            <mog-liste-produits [listType]="'complement'" [produits]="details.boissons" class="list"></mog-liste-produits>
+              <mog-liste-produits [listType]="'complement'" [produits]="details.boissons" class="list"></mog-liste-produits>
+            </div>
+            <div class="c-display">
+              <h5 class="others-title">Autres frites</h5>
+              <mog-liste-produits [listType]="'complement'" [produits]="details.frites" class="list"></mog-liste-produits>
+            </div>
           </div>
-          <div class="others" id="others-frites">
-            <ng-container *ngIf="(produit['@type']|lowercase)==='burger'">
-              <h5 id="others-title">Frites</h5>
-            </ng-container>
-            <!-- <ng-container *ngIf="(produit['@type']|lowercase)==='menu'">
-              <h5 class="others-title">Autres portions de frites</h5>
-            </ng-container> -->
-            <mog-liste-produits [listType]="'complement'" [produits]="details.frites" class="list"></mog-liste-produits>
-          </div>
-        </div>
+        </ng-container>
       </ng-container>
     </ng-container>
   </div>
