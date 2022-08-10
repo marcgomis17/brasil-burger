@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { Produit } from 'src/app/client/shared/models/produit';
 import { DetailsProduitService } from 'src/app/shared/services/details-produit.service';
 
 @Component({
@@ -10,7 +11,10 @@ import { DetailsProduitService } from 'src/app/shared/services/details-produit.s
 })
 export class DetailProduitComponent implements OnInit {
   id: number = 0;
+  produit: Produit | null = null;
   details$: Observable<any> | undefined = undefined;
+  errorMsg: string | undefined = undefined;
+  disabled: boolean = false;
 
   constructor(private _detailService: DetailsProduitService, private _route: ActivatedRoute) { }
 
@@ -21,6 +25,27 @@ export class DetailProduitComponent implements OnInit {
       })
     ).subscribe();
     this.details$ = this._detailService.getDetails(this.id);
-    this.details$.subscribe(console.log);
+    this.details$?.pipe(
+      map(res => {
+        this.produit = res.produit;
+        // console.log(this.produit);
+      })
+    ).subscribe();
+  }
+
+  getAmount(amount: number) {
+    if (this.produit?.type?.toLowerCase() === 'menu') {
+      this.produit.menuTailles?.forEach(menuTaille => {
+        let newAmount = menuTaille.quantite - amount;
+        console.log(newAmount);
+        if (newAmount === 0) {
+          this.disabled = true;
+          this.errorMsg = "Vous avez atteint la quantité maximale";
+        } else {
+          this.disabled = false;
+          this.errorMsg = "";
+        }
+      });
+    }
   }
 }

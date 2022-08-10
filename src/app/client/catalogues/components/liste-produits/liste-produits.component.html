@@ -8,7 +8,7 @@
                 <mog-complement [complement]="produit['frites']"></mog-complement>
             </ng-container>
             <ng-container *ngIf="!produit['frites']">
-                <mog-complement [complement]="produit" [prix]="prix" (amountChanged)="getAmount($event)"></mog-complement>
+                <mog-complement [complement]="produit" [prix]="prix" (amountChanged)="getAmount($event)" [disabled]="disabled"></mog-complement>
             </ng-container>
         </ng-container>
     </ng-container>

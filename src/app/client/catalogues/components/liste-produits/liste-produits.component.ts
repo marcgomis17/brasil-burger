@@ -10,6 +10,7 @@ export class ListeProduitsComponent implements OnInit {
   @Input() produits: Produit[] | any = [];
   @Input() listType: string = "";
   @Input() prix?: number | null = null;
+  @Input() disabled: boolean = false;
   @Output() amountChanged: EventEmitter<number> = new EventEmitter();
 
   constructor() { }

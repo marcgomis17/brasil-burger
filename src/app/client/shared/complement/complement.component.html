@@ -11,5 +11,5 @@
             <!-- <input type="checkbox" id="card-checkbox" [checked]="selected"> -->
         </div>
     </div>
-    <mog-counter (amountChanged)="verify($event)"></mog-counter>
+    <mog-counter (amountChanged)="verify($event)" [disabled]="disabled"></mog-counter>
 </div>

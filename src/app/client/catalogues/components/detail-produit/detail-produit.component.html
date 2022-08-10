@@ -34,8 +34,11 @@
               <ng-container *ngIf="produit.type==='menu'">
                 <ng-container *ngFor="let menuTaille of produit.menuTailles">
                   <div class="boisson-display">
-                    <span class="amount-display"><span id="libelle">{{menuTaille.tailles.libelle}}</span>: <span id="quantite">{{menuTaille.quantite}}</span></span>
-                    <mog-liste-produits [listType]="'complement'" [produits]="menuTaille.tailles.boissons" [prix]="menuTaille.tailles.prix" (amountChanged)="getAmount($event)" class="list"></mog-liste-produits>
+                    <div id="amount-indicator">
+                      <p class="amount-display">{{menuTaille.tailles.libelle}}: {{menuTaille.quantite}}</p>
+                      <p class="text-danger bold" id="quantite-boissons-warning">{{errorMsg}}</p>
+                    </div>
+                    <mog-liste-produits [listType]="'complement'" [produits]="menuTaille.tailles.boissons" [prix]="menuTaille.tailles.prix" (amountChanged)="getAmount($event)" class="list" [disabled]="disabled"></mog-liste-produits>
                   </div>
                 </ng-container>
               </ng-container>

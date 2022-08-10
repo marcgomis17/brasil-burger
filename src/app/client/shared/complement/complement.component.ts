@@ -10,6 +10,7 @@ export class ComplementComponent implements OnInit {
   @Input() complement: Produit | null = null;
   @Input() prix?: number | null = null;
   @Input() id: number | undefined = undefined;
+  @Input() disabled: boolean = false;
   @Output() amountChanged: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
