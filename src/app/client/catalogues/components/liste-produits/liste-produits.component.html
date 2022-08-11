@@ -1,7 +1,7 @@
 <div id="products-list">
     <ng-container *ngFor="let produit of produits">
         <ng-container *ngIf="listType === 'produit'">
-            <mog-card [produit]="produit"></mog-card>
+            <mog-card [produit]="produit" [added]="added"></mog-card>
         </ng-container>
         <ng-container *ngIf="listType === 'complement'">
             <ng-container *ngIf="produit['frites']">

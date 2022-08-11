@@ -11,4 +11,5 @@ export interface Produit {
     menuBurgers?: MenuBurger[];
     menuFrites?: MenuFrite[];
     menuTailles?: MenuTaille[];
+    added: boolean;
 }

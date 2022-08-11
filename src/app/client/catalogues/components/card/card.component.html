@@ -1,10 +1,17 @@
-<div class="card text-left" (click)="getDetails(produit?.id)">
+<div class="card text-left">
     <img class="card-img" src="data:image/png;base64,{{produit?.image}}" routerLink="details/{{produit?.id}}">
     <div class="card-body">
-        <p class="card-title" routerLink="details/{{produit?.id}}">{{produit?.nom}}</p>
+        <div id="product-infos">
+            <p class="card-title" routerLink="details/{{produit?.id}}">{{produit?.nom}}</p>
+            <p class="price-display">{{produit?.prix|currency:'XOF'}}</p>
+        </div>
         <div id="card-bottom">
-            <p class="price-display">{{produit?.prix}}</p>
-            <button class="cart-add" (click)="addCart()"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"></button>
+            <ng-container *ngIf="show===false">
+                <button class="cart-add" (click)="show=true"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"><span>Ajouter au panier</span></button>
+            </ng-container>
+            <ng-container *ngIf="show===true">
+                <mog-counter [defaultValue]="counterValue" (amountChanged)="checkAmount($event)" [produit]="produit"></mog-counter>
+            </ng-container>
         </div>
     </div>
 </div>
