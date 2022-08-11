@@ -10,7 +10,7 @@
                 <button class="cart-add" (click)="show=true"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"><span>Ajouter au panier</span></button>
             </ng-container>
             <ng-container *ngIf="show===true">
-                <mog-counter [defaultValue]="counterValue" (amountChanged)="checkAmount($event)" [produit]="produit"></mog-counter>
+                <mog-counter [defaultValue]="counterValue" (amountChanged)="checkAmount($event)" [produit]="produit" [type]="'produit'" [added]="added"></mog-counter>
             </ng-container>
         </div>
     </div>

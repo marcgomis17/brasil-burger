@@ -18,6 +18,7 @@ export class CartService {
       quantite,
       produit
     }
+    produit.added = true;
     this.produits.push(produitCommande);
     this.cartSubject.next(this.produits);
     localStorage.setItem('produits', JSON.stringify(this.produits));
@@ -30,8 +31,8 @@ export class CartService {
   }
 
   updateCart() {
-    let newProduits = this.produits.filter((el) => el !== null);
-    localStorage.setItem('produits', JSON.stringify(newProduits));
+    this.produits = this.produits.filter((el) => el !== null);
+    localStorage.setItem('produits', JSON.stringify(this.produits));
   }
 
   removeProduct(id: number) {

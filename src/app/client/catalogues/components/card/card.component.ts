@@ -18,7 +18,9 @@ export class CardComponent implements OnInit {
   constructor(private _cartService: CartService) { }
 
   ngOnInit(): void {
-    this.isAdded(this.produit);
+    if (!this.isAdded(this.produit)) {
+      this.counterValue = 1;
+    }
   }
 
   getDetails(id: number | undefined) {
@@ -26,11 +28,8 @@ export class CardComponent implements OnInit {
   }
 
   checkAmount(amount: number) {
-    this.counterValue = amount;
     if (amount === 0) {
       this.show = false;
-      this.counterValue = 1;
-      this._cartService.updateCart();
     }
   }
 
@@ -39,7 +38,10 @@ export class CardComponent implements OnInit {
       if (produit?.id === added.id) {
         this.show = true;
         this.counterValue = added.quantite;
+        return true;
       }
+      return false;
     });
+    return false;
   }
 }
