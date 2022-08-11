@@ -1,0 +1,25 @@
+<div id="article-checkout">
+    <img class="card-img" id="card-img" src="data:image/png;base64,{{produit?.image}}" alt="">
+    <div class="card-body">
+        <div id="main-infos">
+            <h5 class="card-title">{{produit?.nom}}</h5>
+            <p class="card-text" id="price-display">{{produit?.prix|currency:'XOF'}}</p>
+        </div>
+        <div id="footer">
+            <div id="action-btns">
+                <button id="remove-btn" class="button action-btn">
+                    <img src="assets/icons/trash.svg" alt="" class="btn-icon">
+                    <span>Supprimer</span>
+                </button>
+                <ng-container *ngIf="produit?.type==='menu'">
+                    <button id="detail-btn" class="button action-btn">
+                        <img src="assets/icons/detail.svg" alt="" class="btn-icon">
+                        <span>Détails</span>
+                    </button>
+                </ng-container>
+            </div>
+            <mog-counter></mog-counter>
+        </div>
+    </div>
+</div>
+<hr>

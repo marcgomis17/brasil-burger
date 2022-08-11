@@ -1,0 +1,42 @@
+#resume-card {
+    // position: absolute;
+    width: 414px;
+    height: 293px;
+    // top: 2%;
+    // right: 1%;
+    padding-bottom: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .card-header,
+    .card-body,
+    #order-btn-wrapper {
+        display: flex;
+        align-items: center;
+    }
+}
+
+#card-header-text {
+    margin: 0;
+}
+
+.card-body {
+    justify-content: space-between;
+
+    .sum-text {
+        font-size: large;
+    }
+
+    .price-display {
+        font-weight: bold;
+    }
+}
+
+#order-btn-wrapper {
+    margin: 0 4%;
+
+    #order-btn {
+        width: 100%;
+    }
+}
