@@ -1,36 +1,36 @@
 <div id="register-card" class="auth-card card">
     <h3>Créer un compte</h3>
-    <form action="" method="post">
+    <form action="" method="post" [formGroup]="registerForm">
         <div class="input-wrapper">
-            <input type="email" name="" class="form-control" id="email-field" [formControl]="prenom" placeholder="Prénom">
+            <input type="email" name="prenom" class="form-control" id="prenom-field" placeholder="Prénom" formControlName="prenom">
             <span class="error-display"></span>
         </div>
         <div class="input-wrapper mt">
-            <input type="email" name="" class="form-control" id="email-field" [formControl]="nom" placeholder="Nom">
+            <input type="email" name="nom" class="form-control" id="nom-field" placeholder="Nom" formControlName="nom">
             <span class="error-display"></span>
         </div>
         <div class="input-wrapper mt">
-            <input type="email" name="" class="form-control" id="email-field" [formControl]="email" placeholder="Adresse email">
+            <input type="email" name="email" class="form-control" id="email-field" placeholder="Adresse email" formControlName="email">
             <span class="error-display"></span>
         </div>
         <div class="input-wrapper mt">
-            <input type="password" name="" class="form-control" id="password-field" [formControl]="password" placeholder="Mot de passe">
+            <input type="password" name="password" class="form-control" id="password-field" value="" placeholder="Mot de passe" formControlName="password">
             <span class="error-display"></span>
         </div>
         <div class="input-wrapper mt">
-            <input type="password" name="" class="form-control" id="email-field" [formControl]="confirmPassword" placeholder="Confirmez votre mot de passe">
+            <input type="password" name="confirmPassword" class="form-control" id="confirm-password-field" placeholder="Confirmez votre mot de passe" formControlName="confirmPassword">
+            <span class="error-display">{{passwordErrorMsg}}</span>
+        </div>
+        <div class="input-wrapper mt">
+            <input type="text" name="adresse" class="form-control" id="adresse-field" placeholder="Adresse" formControlName="adresse">
             <span class="error-display"></span>
         </div>
         <div class="input-wrapper mt">
-            <input type="text" name="" class="form-control" id="email-field" [formControl]="adresse" placeholder="Adresse">
-            <span class="error-display"></span>
-        </div>
-        <div class="input-wrapper mt">
-            <input type="text" name="" class="form-control" id="email-field" [formControl]="phone" placeholder="Téléphone">
+            <input type="text" name="telephone" class="form-control" id="phone-field" placeholder="Téléphone" formControlName="telephone">
             <span class="error-display"></span>
         </div>
         <div id="btn-wrapper">
-            <button type="submit" class="button submit-btn" id="submit-btn">Connexion</button>
+            <button type="submit" class="button submit-btn" id="submit-btn" (click)="register()">Inscription</button>
         </div>
     </form>
     <hr class="auth-separator">

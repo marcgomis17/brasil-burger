@@ -9,7 +9,7 @@ import { baseUrl } from 'src/environments/environment';
 })
 export class AuthenticationService {
   private _loginUrl: string = baseUrl + "login_check";
-  private _clientRegisterUrl: string = baseUrl + "/clients";
+  private _clientRegisterUrl: string = baseUrl + "clients";
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
 

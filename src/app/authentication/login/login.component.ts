@@ -16,14 +16,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { }
 
   login() {
-    this._authService.login(this.email, this.password).subscribe(res => {
-      if (res) {
-        let token = res.token;
-        localStorage.setItem("token", token);
-        this._router.navigateByUrl('/client/catalogues');
-      } else {
-        // TODO: Display error message
-      }
-    });
+    try {
+      this._authService.login(this.email, this.password).subscribe(res => {
+        if (res) {
+          let token = res.token;
+          localStorage.setItem("token", token);
+          this._router.navigateByUrl('/client/catalogues');
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
