@@ -30,10 +30,6 @@ export class CartService {
     }
   }
 
-  getProductsObs(): Observable<Produit[]> {
-    return JSON.parse(localStorage.getItem('produits') || '{}');
-  }
-
   updateCart() {
     this.produits = this.produits.filter((el) => el !== null);
     localStorage.setItem('produits', JSON.stringify(this.produits));

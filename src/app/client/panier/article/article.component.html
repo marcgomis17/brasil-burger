@@ -1,9 +1,9 @@
 <div id="article-checkout">
-    <img class="card-img" id="card-img" src="data:image/png;base64,{{produit?.image}}" alt="">
+    <img class="card-img" id="card-img" src="data:image/png;base64,{{produit.produit.image}}" alt="">
     <div class="card-body">
         <div id="main-infos">
-            <h5 class="card-title">{{produit?.nom}}</h5>
-            <p class="card-text" id="price-display">{{produit?.prix|currency:'XOF'}}</p>
+            <h5 class="card-title">{{produit.produit.nom}}</h5>
+            <p class="card-text" id="price-display">{{produit.produit.prix|currency:'XOF'}}</p>
         </div>
         <div id="footer">
             <div id="action-btns">
@@ -18,7 +18,7 @@
                     </button>
                 </ng-container>
             </div>
-            <mog-counter></mog-counter>
+            <mog-counter [defaultValue]="produit.quantite"></mog-counter>
         </div>
     </div>
 </div>
