@@ -22,7 +22,6 @@ export class ListeProduitsComponent implements OnInit {
     if (this.listType === 'produit') {
       let produits = this._cartService.getProducts();
       this.getAdded(produits);
-      console.log(this.added);
     }
   }
 

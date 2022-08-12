@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PriceService } from '../../shared/services/price.service';
 
 @Component({
   selector: 'mog-resume',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./resume.component.scss']
 })
 export class ResumeComponent implements OnInit {
+  totalPrice: number = 0;
 
-  constructor() { }
+  constructor(private _priceService: PriceService) { }
 
   ngOnInit(): void {
+    this.totalPrice = this._priceService.computePrice();
   }
-
 }

@@ -19,7 +19,7 @@
             <input type="text" class="form-control" id="search-bar" placeholder="Rechercher..." [formControl]="search">
         </form>
         <div id="cart" routerLink="/client/panier">
-            <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+            <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">{{productAmount}}</span>
             <img src="assets/icons/cart.svg" alt="" id="cart-btn">
         </div>
         <ng-container>

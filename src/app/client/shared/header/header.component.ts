@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'mog-header',
@@ -8,12 +9,11 @@ import { FormControl } from '@angular/forms';
 })
 export class HeaderComponent implements OnInit {
   search: FormControl = new FormControl();
-  logo: string = "assets/images/logo.png";
-  cart: string = "assets/icons/cart.svg";
+  productAmount: number = 0;
 
-  constructor() { }
+  constructor(private _cartService: CartService) { }
 
   ngOnInit(): void {
+    this.productAmount = this._cartService.getProducts().length;
   }
-
 }

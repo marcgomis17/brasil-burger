@@ -28,7 +28,6 @@ export class DetailProduitComponent implements OnInit {
     this.details$?.pipe(
       map(res => {
         this.produit = res.produit;
-        // console.log(this.produit);
       })
     ).subscribe();
   }
@@ -37,7 +36,6 @@ export class DetailProduitComponent implements OnInit {
     if (this.produit?.type?.toLowerCase() === 'menu') {
       this.produit.menuTailles?.forEach(menuTaille => {
         let newAmount = menuTaille.quantite - amount;
-        console.log(newAmount);
         if (newAmount === 0) {
           this.disabled = true;
           this.errorMsg = "Vous avez atteint la quantité maximale";
