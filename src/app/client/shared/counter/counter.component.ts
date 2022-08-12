@@ -19,41 +19,23 @@ export class CounterComponent implements OnInit {
   constructor(private _cartService: CartService) { }
 
   ngOnInit() {
-    this.added.forEach(produitAdded => {
-      if (produitAdded.id === this.produit.id) {
-        this.defaultValue = produitAdded.quantite;
+    this.added.forEach(addedProduct => {
+      if (this.produit.id === addedProduct.id) {
+        this.defaultValue = addedProduct.quantite;
       }
-    });
-    if (this.type === 'produit') {
-      this._cartService.addToCart(this.produit, this.defaultValue);
-    }
+    })
   }
 
   increase() {
     this.defaultValue += 1;
-    this.updateAmount();
     this.amountChanged.emit(this.defaultValue);
   }
 
   decrease() {
     this.defaultValue -= 1;
-    this.updateAmount();
     if (this.defaultValue < 0) {
       this.defaultValue = 0;
     }
     this.amountChanged.emit(this.defaultValue);
-  }
-
-  updateAmount() {
-    this._cartService.produits.forEach(produitCommande => {
-      if (produitCommande.produit.id === this.produit.id) {
-        if (this.defaultValue !== 0) {
-          produitCommande.quantite = this.defaultValue;
-          localStorage.setItem('produits', JSON.stringify(this._cartService.produits));
-        } else {
-          this._cartService.removeProduct(this.produit.id);
-        }
-      }
-    });
   }
 }

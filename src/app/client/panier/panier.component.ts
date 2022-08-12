@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Produit } from '../shared/models/produit';
 import { CartService } from '../shared/services/cart.service';
 
 @Component({
@@ -8,11 +8,11 @@ import { CartService } from '../shared/services/cart.service';
     styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent implements OnInit {
-    products$: Observable<any> = new Observable<any>();
+    produits: Produit[] = [];
 
     constructor(private _cartService: CartService) { }
 
     ngOnInit(): void {
-        this.products$ = this._cartService.cartSubject.asObservable();
+        this._cartService.getProductsObs().subscribe(console.log);
     }
 }

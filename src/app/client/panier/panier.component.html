@@ -3,13 +3,10 @@
     <div id="head">
         <p id="title">Mon panier</p>
     </div>
-    <pre>{{products$|async|json}}</pre>
     <div id="container">
         <div id="articles">
-            <ng-container *ngIf="products$|async as produits">
-                <ng-container *ngFor="let produit of produits">
-                    <mog-article [produit]="produit"></mog-article>
-                </ng-container>
+            <ng-container *ngFor="let produit of produits">
+                <mog-article [produit]="produit"></mog-article>
             </ng-container>
         </div>
         <mog-resume></mog-resume>

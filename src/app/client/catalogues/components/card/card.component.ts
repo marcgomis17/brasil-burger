@@ -10,7 +10,7 @@ import { CartService } from 'src/app/client/shared/services/cart.service';
 })
 export class CardComponent implements OnInit {
   show: boolean = false;
-  @Input() produit: Produit | null = null;
+  @Input() produit: Produit | any = null;
   @Input() added: Added[] = [];
   counterValue: number = 0;
   @Output() onSelectedItem: EventEmitter<any> = new EventEmitter();
@@ -18,9 +18,11 @@ export class CardComponent implements OnInit {
   constructor(private _cartService: CartService) { }
 
   ngOnInit(): void {
-    if (!this.isAdded(this.produit)) {
-      this.counterValue = 1;
-    }
+    this.added.forEach(addedProduct => {
+      if (addedProduct.id === this.produit.id) {
+        this.show = true;
+      }
+    });
   }
 
   getDetails(id: number | undefined) {
@@ -28,20 +30,44 @@ export class CardComponent implements OnInit {
   }
 
   checkAmount(amount: number) {
+    this.counterValue = amount;
     if (amount === 0) {
       this.show = false;
     }
+    this.updateAmount(amount);
   }
 
-  isAdded(produit: Produit | null) {
+  addProduct() {
+    this.show = true;
+    this.counterValue = 1;
+    if (!this.isAdded(this.produit?.id)) {
+      this._cartService.addToCart(this.produit, this.counterValue);
+    }
+  }
+
+  isAdded(id: number) {
     this.added.forEach(added => {
-      if (produit?.id === added.id) {
+      if (id !== added.id) {
+        return false;
+      } else {
         this.show = true;
         this.counterValue = added.quantite;
         return true;
       }
-      return false;
     });
     return false;
+  }
+
+  updateAmount(value: number) {
+    this._cartService.produits.forEach(produitCommande => {
+      if (produitCommande.produit.id === this.produit.id) {
+        if (value !== 0) {
+          produitCommande.quantite = value;
+          localStorage.setItem('produits', JSON.stringify(this._cartService.produits));
+        } else {
+          this._cartService.removeProduct(this.produit.id);
+        }
+      }
+    });
   }
 }

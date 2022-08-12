@@ -7,7 +7,7 @@ import { Produit } from '../../shared/models/produit';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent implements OnInit {
-  @Input() produit: Produit | null = null;
+  @Input() produit: Produit | any = null;
 
   constructor() { }
 

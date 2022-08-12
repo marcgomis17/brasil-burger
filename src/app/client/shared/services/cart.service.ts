@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Produit } from '../models/produit';
 import { ProduitCommande } from '../models/produitCommande';
 
@@ -28,6 +28,10 @@ export class CartService {
     if (typeof (JSON.parse(localStorage.getItem('produits') || '{}')) === 'object') {
       return JSON.parse(localStorage.getItem('produits') || '{}');
     }
+  }
+
+  getProductsObs(): Observable<Produit[]> {
+    return JSON.parse(localStorage.getItem('produits') || '{}');
   }
 
   updateCart() {
