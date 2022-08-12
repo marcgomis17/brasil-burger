@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'mog-login',
@@ -7,12 +8,22 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email: FormControl = new FormControl();
-  password: FormControl = new FormControl();
+  email: string = "";
+  password: string = "";
 
-  constructor() { }
+  constructor(private _authService: AuthenticationService, private _router: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { }
+
+  login() {
+    this._authService.login(this.email, this.password).subscribe(res => {
+      if (res) {
+        let token = res.token;
+        localStorage.setItem("token", token);
+        this._router.navigateByUrl('/client/catalogues');
+      } else {
+        // TODO: Display error message
+      }
+    });
   }
-
 }

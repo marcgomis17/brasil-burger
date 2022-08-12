@@ -1,16 +1,16 @@
 <div id="login-card" class="auth-card card">
     <h3>Connexion</h3>
-    <form action="" method="post">
+    <form action="" method="">
         <div class="input-wrapper">
-            <input type="email" name="" class="form-control" id="email-field" [formControl]="email" placeholder="Adresse email">
+            <input type="email" name="username" class="form-control" id="email-field" placeholder="Adresse email" [(ngModel)]="email">
             <span class="error-display"></span>
         </div>
         <div class="input-wrapper">
-            <input type="password" name="" class="form-control" id="password-field" [formControl]="password" placeholder="Mot de passe">
+            <input type="password" name="password" class="form-control" id="password-field" placeholder="Mot de passe" [(ngModel)]="password">
             <span class="error-display"></span>
         </div>
         <div id="btn-wrapper">
-            <button type="submit" class="button submit-btn" id="submit-btn">Connexion</button>
+            <button type="submit" class="button submit-btn" id="submit-btn" (click)="login()">Connexion</button>
         </div>
     </form>
     <hr class="auth-separator">
