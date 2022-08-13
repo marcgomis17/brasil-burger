@@ -1,0 +1,127 @@
+#title {
+    font-weight: bold;
+    font-size: large;
+    color: #757575;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    column-gap: 2%;
+    margin-top: 15vh;
+
+    .info-container {
+        border: 1px solid lightgrey;
+        border-radius: 2px;
+    }
+
+    .info-header {
+        padding: 0.5% 1%;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid lightgrey;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    #info-body {
+        padding: 1%;
+
+        #question-text {
+            font-size: large;
+        }
+
+        #choices-wrapper {
+            display: flex;
+            align-items: center;
+            column-gap: 20%;
+            margin-top: 3vh;
+
+            .choice:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    #back-to-cart-btn {
+        border: none;
+        border-radius: 5px;
+        color: #ffcc00;
+        background-color: #ffcc0031;
+        font-weight: bold;
+        height: 40px;
+        width: 30%;
+        margin-top: 2vh;
+    }
+
+    #delivery-info-bottom {
+        padding: 1%;
+    }
+}
+
+#adress-info {
+    display: flex;
+    column-gap: 5%;
+    margin-top: 5vh;
+
+    .adress-input {
+        width: 100%;
+    }
+
+    .form-select {
+        width: 100%;
+    }
+}
+
+.choice {
+    label {
+        margin-left: 1vw;
+    }
+}
+
+#resume-info {
+    #header {
+        padding: 1% 1%;
+    }
+}
+
+#resume-title {
+    padding: 0% 1%;
+}
+
+#resume-body {
+    .product-presenter {
+        padding: 1% 2%;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    .presenter-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .amount {
+        margin-top: 1vh;
+    }
+}
+
+.resume-bottom {
+    padding: 1% 2%;
+    width: 100%;
+
+    #order-btn {
+        width: 100%;
+    }
+}
+
+.h-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

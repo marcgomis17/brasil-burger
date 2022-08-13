@@ -6,6 +6,7 @@ import { ClientSharedModule } from '../shared/shared.module';
 import { PanierComponent } from './panier.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ArticleComponent } from './article/article.component';
+import { OrderComponent } from './order/order.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ArticleComponent } from './article/article.component';
         ResumeComponent,
         ArticleComponent,
         ArticleComponent,
-        ResumeComponent
+        ResumeComponent,
+        OrderComponent
     ],
     imports: [
         CommonModule,

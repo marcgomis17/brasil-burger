@@ -6,6 +6,38 @@
         grid-template-columns: 3fr 1fr;
         column-gap: 4%;
     }
+
+    #empty-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 5vh;
+
+        #empty-cart-img {
+            height: auto;
+            width: 25vw;
+        }
+
+        #text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            #order-btn {
+                margin-top: 2vh;
+                height: 7vh;
+                padding: 5%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 5px;
+                border: none;
+                background-color: #ffcc00;
+                color: #fff;
+                font-weight: bold;
+            }
+        }
+    }
 }
 
 #head {

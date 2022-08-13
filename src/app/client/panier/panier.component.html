@@ -3,13 +3,27 @@
     <div id="head">
         <p id="title">Mon panier</p>
     </div>
-    <div id="container">
-        <div id="articles">
-            <ng-container *ngFor="let produit of produits">
-                <mog-article [produit]="produit"></mog-article>
-            </ng-container>
+    <ng-container *ngIf="produits.length !== undefined && produits.length > 0">
+        <div id="container">
+            <div id="articles">
+                <ng-container *ngFor="let produit of produits">
+                    <mog-article [produit]="produit"></mog-article>
+                </ng-container>
+            </div>
+            <mog-resume></mog-resume>
         </div>
-        <mog-resume></mog-resume>
-    </div>
+    </ng-container>
+    <ng-container *ngIf="produits.length === undefined || produits.length === 0">
+        <div id="empty-page">
+            <div id="img-container">
+                <img src="assets/images/empty-cart.svg" alt="" id="empty-cart-img">
+            </div>
+            <div id="text-container">
+                <h3>Votre panier est vide</h3>
+                <h5>Vous n'avez pas encore commandé de produit</h5>
+                <button id="order-btn" routerLink="/client/catalogues">Passer une commande</button>
+            </div>
+        </div>
+    </ng-container>
 </div>
 <mog-footer></mog-footer>

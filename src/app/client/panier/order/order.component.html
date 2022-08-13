@@ -1,0 +1,87 @@
+<mog-header></mog-header>
+<div id="container" class="container">
+    <div id="first-part">
+        <div id="head">
+            <p id="title">Finaliser la commande</p>
+        </div>
+        <div id="delivery-info" class="info-container">
+            <div id="info-header" class="info-header">
+                <p>Mode de livraison</p>
+            </div>
+            <div id="info-body" class="info-body">
+                <p id="question-text">Comment voulez-vous recevoir votre commande?</p>
+                <div id="choices-wrapper">
+                    <div id="deliver-choice" class="choice">
+                        <input type="radio" name="deliver" id="deliver" value="true" (change)="getValue($event)" checked>
+                        <label for="deliver">Livraison à domicile</label>
+                    </div>
+                    <div id="pick-choice" class="choice">
+                        <input type="radio" name="deliver" id="pick" value="false" (change)="getValue($event)">
+                        <label for="pick">Sur place</label>
+                    </div>
+                </div>
+                <ng-container *ngIf="deliver==true">
+                    <div id="adress-info">
+                        <div id="quartier-input" class="adress-input">
+                            <!-- <input type="email" class="form-control" id="quartier-field" placeholder="Zone"> -->
+                            <select class="form-select">
+                                <option selected>Quartier</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div id="zone-input" class="adress-input">
+                            <!-- <input type="email" class="form-control" id="zone-field" placeholder="Zone"> -->
+                            <select class="form-select">
+                                <option selected>Zone</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div id="delivery-info-bottom">
+                <button id="back-to-cart-btn" routerLink="/client/panier">Retour au panier</button>
+            </div>
+        </div>
+    </div>
+    <div id="second-part">
+        <div id="head">
+            <p id="title">Résumé</p>
+        </div>
+        <div id="resume-info" class="info-container">
+            <div id="header" class="info-header">
+                <p id="resume-title">Votre commande</p>
+            </div>
+            <div id="resume-body">
+                <ng-container>
+                    <div class="product-presenter">
+                        <img src="" alt="">
+                        <div class="presenter-header">
+                            <p class="product-name">Nom de produit</p>
+                            <p class="price-display">2000</p>
+                        </div>
+                        <p class="amount">Quantité: 2</p>
+                    </div>
+                    <hr>
+                </ng-container>
+            </div>
+            <div id="resume-top-bottom" class="resume-bottom">
+                <div id="products-total" class="h-display">
+                    <p>Sous total</p>
+                    <p>5000</p>
+                </div>
+                <div id="delivery-price" class="h-display">
+                    <p>Montant livraison</p>
+                    <p>1000</p>
+                </div>
+            </div>
+            <div id="resume-bottom" class="resume-bottom">
+                <button id="order-btn" class="button">Commander</button>
+            </div>
+        </div>
+    </div>
+</div>
