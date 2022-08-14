@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Added } from 'src/app/client/shared/models/added';
-import { Produit } from 'src/app/client/shared/models/produit';
 import { CartService } from 'src/app/client/shared/services/cart.service';
+import { Produit } from 'src/app/shared/models/produit';
 
 @Component({
   selector: 'mog-liste-produits',

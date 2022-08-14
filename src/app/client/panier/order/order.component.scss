@@ -92,18 +92,29 @@
 }
 
 #resume-body {
+    #separator {
+        margin: 1% 0%;
+    }
+
     .product-presenter {
         padding: 1% 2%;
+        display: flex;
+        align-items: center;
+        column-gap: 5%;
+
+        #presenter-text {
+            width: 100%;
+
+            .presenter-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
     }
 
     p {
         margin: 0;
-    }
-
-    .presenter-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
 
     .amount {
@@ -117,6 +128,7 @@
 
     #order-btn {
         width: 100%;
+        margin-bottom: 1%;
     }
 }
 
@@ -124,4 +136,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+#product-img {
+    width: 5vw;
+    height: 8vh;
 }

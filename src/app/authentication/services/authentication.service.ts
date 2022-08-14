@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from 'src/app/client/shared/models/user';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { User } from 'src/app/shared/models/user';
 import { baseUrl } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private _loginUrl: string = baseUrl + "login_check";
-  private _clientRegisterUrl: string = baseUrl + "clients";
+  private _loginUrl: string = `${baseUrl}login_check`;
+  private _clientRegisterUrl: string = `${baseUrl}clients`;
   private userSubject: BehaviorSubject<User>;
   public user: Observable<User>;
 
@@ -25,7 +25,16 @@ export class AuthenticationService {
     return this._http.post<any>(
       this._loginUrl,
       body
-    );
+    ).pipe(
+      map(res => {
+        if (res.token) {
+          let payload = res.token.split('.')[1];
+          let user = JSON.parse(atob(payload)) as User;
+          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem("token", res.token);
+        }
+      })
+    )
   }
 
   register(data: any): Observable<any> {
@@ -33,5 +42,9 @@ export class AuthenticationService {
       this._clientRegisterUrl,
       data
     );
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
   }
 }

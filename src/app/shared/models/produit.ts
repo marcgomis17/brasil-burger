@@ -1,6 +1,6 @@
-import { MenuTaille } from "./menuTaille";
-import { MenuFrite } from "./menuFrite";
 import { MenuBurger } from "./menuBurger";
+import { MenuFrite } from "./menuFrite";
+import { MenuTaille } from "./menuTaille";
 
 export interface Produit {
     type?: string;

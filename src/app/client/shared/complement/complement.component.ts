@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Produit } from 'src/app/client/shared/models/produit';
+import { Produit } from 'src/app/shared/models/produit';
 
 @Component({
   selector: 'mog-complement',

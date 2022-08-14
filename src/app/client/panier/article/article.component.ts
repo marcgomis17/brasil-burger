@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Produit } from '../../shared/models/produit';
+import { Produit } from 'src/app/shared/models/produit';
 
 @Component({
   selector: 'mog-article',

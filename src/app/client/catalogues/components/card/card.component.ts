@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Added } from 'src/app/client/shared/models/added';
-import { Produit } from 'src/app/client/shared/models/produit';
 import { CartService } from 'src/app/client/shared/services/cart.service';
+import { Produit } from 'src/app/shared/models/produit';
 
 @Component({
   selector: 'mog-card',
@@ -60,7 +60,7 @@ export class CardComponent implements OnInit {
 
   updateAmount(value: number) {
     this._cartService.produits.forEach(produitCommande => {
-      if (produitCommande.produit.id === this.produit.id) {
+      if (produitCommande.produit?.id === this.produit.id) {
         if (value !== 0) {
           produitCommande.quantite = value;
           localStorage.setItem('produits', JSON.stringify(this._cartService.produits));

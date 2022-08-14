@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
-import { Produit } from 'src/app/client/shared/models/produit';
+import { Produit } from 'src/app/shared/models/produit';
 import { DetailsProduitService } from 'src/app/shared/services/details-produit.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class DetailProduitComponent implements OnInit {
 
   getAmount(amount: number) {
     if (this.produit?.type?.toLowerCase() === 'menu') {
-      this.produit.menuTailles?.forEach(menuTaille => {
+      this.produit.menuTailles?.forEach((menuTaille: any) => {
         let newAmount = menuTaille.quantite - amount;
         if (newAmount === 0) {
           this.disabled = true;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Produit } from '../models/produit';
-import { ProduitCommande } from '../models/produitCommande';
+import { Produit } from 'src/app/shared/models/produit';
+import { ProduitCommande } from 'src/app/shared/models/produitCommande';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +13,12 @@ export class CartService {
 
   constructor() { }
 
-  addToCart(produit: Produit, quantite: number) {
+  addToCart(produit: Produit | any, quantite: number) {
     let produitCommande: ProduitCommande = {
       quantite,
       produit
     }
-    produit.added = true;
+    produit.type = produit['@type'].toLowerCase();
     this.produits.push(produitCommande);
     this.cartSubject.next(this.produits);
     localStorage.setItem('produits', JSON.stringify(this.produits));
@@ -37,7 +37,7 @@ export class CartService {
 
   removeProduct(id: number) {
     this.produits.forEach(produitCommande => {
-      if (id === produitCommande.produit.id) {
+      if (id === produitCommande.produit?.id) {
         delete this.produits[this.produits.indexOf(produitCommande)];
         this.updateCart();
       }

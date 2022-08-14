@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
         } else {
           this._authService.register(this.registerForm.value).subscribe(res => {
             if (res) {
-              this._router.navigateByUrl('/clients/panier');
+              this._router.navigateByUrl('/client/auth');
             }
           });
         }

@@ -22,22 +22,26 @@
                 </div>
                 <ng-container *ngIf="deliver==true">
                     <div id="adress-info">
-                        <div id="quartier-input" class="adress-input">
-                            <!-- <input type="email" class="form-control" id="quartier-field" placeholder="Zone"> -->
-                            <select class="form-select">
-                                <option selected>Quartier</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
                         <div id="zone-input" class="adress-input">
                             <!-- <input type="email" class="form-control" id="zone-field" placeholder="Zone"> -->
-                            <select class="form-select">
-                                <option selected>Zone</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select class="form-select" (change)="getZone($event.target)">
+                                <option selected>--------- Zone --------</option>
+                                <ng-container *ngIf="(zones$|async)['hydra:member'] as zones">
+                                    <ng-container *ngFor="let zone of zones">
+                                        <option value="{{zone.id}}">{{zone.nom}}</option>
+                                    </ng-container>
+                                </ng-container>
+                            </select>
+                        </div>
+                        <div id="quartier-input" class="adress-input">
+                            <!-- <input type="email" class="form-control" id="quartier-field" placeholder="Zone"> -->
+                            <select class="form-select" (change)="getQuartier($event.target)">
+                                <option selected>-------- Quartier --------</option>
+                                <ng-container *ngFor="let zone of zones">
+                                    <ng-container *ngFor="let quartier of quartiers">
+                                        <option value="{{quartier.id}}">{{quartier.nom}}</option>
+                                    </ng-container>
+                                </ng-container>
                             </select>
                         </div>
                     </div>
@@ -57,30 +61,38 @@
                 <p id="resume-title">Votre commande</p>
             </div>
             <div id="resume-body">
-                <ng-container>
+                <ng-container *ngFor="let produitCommande of produits">
                     <div class="product-presenter">
-                        <img src="" alt="">
-                        <div class="presenter-header">
-                            <p class="product-name">Nom de produit</p>
-                            <p class="price-display">2000</p>
-                        </div>
-                        <p class="amount">Quantité: 2</p>
+                        <ng-container *ngIf="produitCommande.produit as produit">
+                            <img src="data:image/png;base64,{{produit.image}}" id="product-img">
+                            <div id="presenter-text">
+                                <div class="presenter-header">
+                                    <p class="product-name">{{produit.nom}}</p>
+                                    <p class="price-display">{{produit.prix}}</p>
+                                </div>
+                                <p class="amount">Quantité: {{produitCommande.quantite}}</p>
+                            </div>
+                        </ng-container>
                     </div>
-                    <hr>
+                    <hr id="separator">
                 </ng-container>
             </div>
             <div id="resume-top-bottom" class="resume-bottom">
                 <div id="products-total" class="h-display">
                     <p>Sous total</p>
-                    <p>5000</p>
+                    <p>{{prixTotal}}</p>
                 </div>
                 <div id="delivery-price" class="h-display">
                     <p>Montant livraison</p>
-                    <p>1000</p>
+                    <p>{{prixLivraison}}</p>
+                </div>
+                <div id="order-total" class="h-display">
+                    <p>Montant de la commande</p>
+                    <p>{{orderPrice}}</p>
                 </div>
             </div>
             <div id="resume-bottom" class="resume-bottom">
-                <button id="order-btn" class="button">Commander</button>
+                <button id="order-btn" class="button" (click)="order()">Commander</button>
             </div>
         </div>
     </div>
