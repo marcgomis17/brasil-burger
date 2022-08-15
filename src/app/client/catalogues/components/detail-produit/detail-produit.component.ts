@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { CartService } from 'src/app/client/shared/services/cart.service';
 import { Produit } from 'src/app/shared/models/produit';
 import { DetailsProduitService } from 'src/app/shared/services/details-produit.service';
 
@@ -16,7 +17,7 @@ export class DetailProduitComponent implements OnInit {
   errorMsg: string | undefined = undefined;
   disabled: boolean = false;
 
-  constructor(private _detailService: DetailsProduitService, private _route: ActivatedRoute) { }
+  constructor(private _detailService: DetailsProduitService, private _route: ActivatedRoute, private _cartService: CartService) { }
 
   ngOnInit() {
     this._route.params.pipe(
@@ -45,5 +46,9 @@ export class DetailProduitComponent implements OnInit {
         }
       });
     }
+  }
+
+  addToCart() {
+    this._cartService.addToCart(this.produit, 1);
   }
 }

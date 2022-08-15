@@ -2,7 +2,6 @@
   <mog-header></mog-header>
   <div id="detail-wrapper">
     <ng-container *ngIf="(details$|async) as details">
-      <!-- <pre>{{(details)|json}}</pre> -->
       <ng-container *ngIf="details.produit as produit">
         <div id="product-display">
           <div id="img-wrapper">
@@ -75,7 +74,7 @@
     </ng-container>
   </div>
   <div id="fab-container">
-    <button id="add-fab"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"><span id="btn-text">Ajouter au panier</span></button>
+    <button id="add-fab" (click)="addToCart()"><img src="assets/icons/cart-add.svg" alt="" class="btn-icon"><span id="btn-text">Ajouter au panier</span></button>
   </div>
   <mog-footer></mog-footer>
 </div>
