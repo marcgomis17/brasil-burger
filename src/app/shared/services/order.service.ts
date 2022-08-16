@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProduitCommande } from 'src/app/shared/models/produitCommande';
 import { baseUrl } from 'src/environments/environment';
-import { Panier } from '../models/panier';
+import { Panier } from '../../client/shared/models/panier';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class OrderService {
   menus: ProduitCommande[] = [];
   boissons: ProduitCommande[] = [];
   frites: ProduitCommande[] = [];
-  private _orderUrl: string = `${baseUrl}commandes`
+  private _orderUrl: string = `${baseUrl}commandes`;
 
   constructor(private _http: HttpClient) { }
 
@@ -47,5 +47,10 @@ export class OrderService {
 
   sendOrder(order: Panier): Observable<any> {
     return this._http.post<any>(this._orderUrl, order);
+  }
+
+  getClientOrder(id: number | any): Observable<any> {
+    const params = new HttpParams().set('id', id);
+    return this._http.get<any>(`${baseUrl}clients/${id}/commandes`, { params: params });
   }
 }

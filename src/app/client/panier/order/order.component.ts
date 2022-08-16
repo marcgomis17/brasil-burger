@@ -5,7 +5,7 @@ import { Quartier } from 'src/app/shared/models/quartier';
 import { AdressService } from 'src/app/shared/services/adress.service';
 import { Panier } from '../../shared/models/panier';
 import { CartService } from '../../shared/services/cart.service';
-import { OrderService } from '../../shared/services/order.service';
+import { OrderService } from '../../../shared/services/order.service';
 import { PriceService } from '../../shared/services/price.service';
 
 @Component({

@@ -1,0 +1,32 @@
+<div id="container" class="container">
+    <p class="title">Mes commandes</p> <!-- TODO: Put title class -->
+    <div id="order-board-wrapper">
+        <div id="order-board">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID Commande</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Etat</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let order of orders">
+                        <tr>
+                            <td scope="row">{{order['numeroCommande']}}</td>
+                            <td scope="row">{{order['dateCommande']|date:'dd.MM.yyyy'}} <span id="order-hour">{{order['dateCommande']|date:'HH:mm'}}</span></td>
+                            <td scope="row">{{order['prixTotal']|currency:'XOF'}}</td>
+                            <td scope="row">{{order['etat']}}</td>
+                            <td scope="row" id="actions">
+                                <button class="action-btn icon-btn btn btn-success"><img src="assets/icons/detail.svg" alt="" class="btn-icon"><span>Détails</span></button>
+                                <button class="action-btn icon-btn btn btn-danger"><img src="assets/icons/stop.svg" alt="" class="btn-icon"><span>Annuler</span></button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

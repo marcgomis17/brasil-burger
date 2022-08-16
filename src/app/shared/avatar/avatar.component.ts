@@ -15,7 +15,6 @@ export class AvatarComponent implements OnInit {
 
   ngOnInit(): void {
     this._user = this._auth.getUser() as User;
-    console.log(this._user.prenom.charAt(0));
     this.userAcronym = (this._user.prenom.charAt(0) + this._user.nom.charAt(0)).toUpperCase();
   }
 }

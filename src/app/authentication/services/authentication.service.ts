@@ -46,12 +46,12 @@ export class AuthenticationService {
     let payload = token.split('.')[1];
     let userData = JSON.parse(atob(payload));
     let user: User = {
+      id: userData.user.id,
       prenom: userData.user.prenom,
       nom: userData.user.nom,
       email: userData.username,
       roles: userData.roles
     }
-    console.log(user);
     localStorage.setItem('user', JSON.stringify(user));
   }
 
