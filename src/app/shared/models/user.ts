@@ -7,4 +7,5 @@ export interface User {
     adresse?: string;
     telephone?: string;
     matriculeMoto?: string;
+    roles?: [];
 }

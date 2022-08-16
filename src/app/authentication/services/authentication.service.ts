@@ -28,10 +28,8 @@ export class AuthenticationService {
     ).pipe(
       map(res => {
         if (res.token) {
-          let payload = res.token.split('.')[1];
-          let user = JSON.parse(atob(payload)) as User;
-          localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem("token", res.token);
+          this.saveUser(res.token);
         }
       })
     )
@@ -42,6 +40,23 @@ export class AuthenticationService {
       this._clientRegisterUrl,
       data
     );
+  }
+
+  saveUser(token: any) {
+    let payload = token.split('.')[1];
+    let userData = JSON.parse(atob(payload));
+    let user: User = {
+      prenom: userData.user.prenom,
+      nom: userData.user.nom,
+      email: userData.username,
+      roles: userData.roles
+    }
+    console.log(user);
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
+  getUser() {
+    return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
   getToken() {
