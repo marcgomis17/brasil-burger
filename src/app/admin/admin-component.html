@@ -1,4 +1,20 @@
-<mog-header></mog-header>
-<div class="container">
-    <router-outlet></router-outlet>
+<div id="main-container">
+    <header class="fixed-top">
+        <div id="second-part">
+            <mog-avatar (click)="showUserMenu()"></mog-avatar>
+            <div id="name-display">
+                <p id="username-display">{{userName}}</p>
+                <p id="role-display">Manager</p>
+            </div>
+        </div>
+    </header>
+    <div id="side-bar">
+        <div id="side-bar-header">
+            <img src="assets/images/logo.png" alt="" id="logo" routerLink="/admin">
+            <p id="title-display">Brasil burger</p>
+        </div>
+    </div>
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
 </div>

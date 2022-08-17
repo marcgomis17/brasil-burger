@@ -1,0 +1,31 @@
+<header class="fixed-top">
+    <div id="first-part">
+        <div id="icon-area">
+            <a routerLink="/client/catalogues"><img src="assets/images/logo.png" alt="" id="logo"></a>
+        </div>
+        <nav class="navbar navbar-expand">
+            <ul class="nav navbar-nav">
+                <a class="nav-link" routerLink="/client/catalogues">
+                    <li class="nav-item">Accueil</li>
+                </a>
+                <a class="nav-link" routerLink="/client/commandes">
+                    <li class="nav-item">Commandes</li>
+                </a>
+            </ul>
+        </nav>
+    </div>
+    <div id="second-part">
+        <form action="" method="post">
+            <input type="text" class="form-control" id="search-bar" placeholder="Rechercher..." [formControl]="search">
+        </form>
+        <div id="cart" routerLink="/client/panier">
+            <ng-container *ngIf="productAmount!==0">
+                <span class="position-relative top-0 start-100 translate-middle badge rounded-pill bg-danger">{{productAmount}}</span>
+            </ng-container>
+            <img src="assets/icons/cart.svg" alt="" id="cart-btn">
+        </div>
+        <ng-container *ngIf="isConnected===true">
+            <mog-avatar></mog-avatar>
+        </ng-container>
+    </div>
+</header>

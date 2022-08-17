@@ -7,6 +7,7 @@ import { Panier } from '../../shared/models/panier';
 import { CartService } from '../../shared/services/cart.service';
 import { OrderService } from '../../../shared/services/order.service';
 import { PriceService } from '../../shared/services/price.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mog-order',
@@ -24,7 +25,7 @@ export class OrderComponent implements OnInit {
   orderPrice: number = 0;
   selectQuartier: Quartier | undefined = undefined;
 
-  constructor(private _cartService: CartService, private _orderService: OrderService, private _adress: AdressService, private _priceService: PriceService) { }
+  constructor(private _cartService: CartService, private _orderService: OrderService, private _adress: AdressService, private _priceService: PriceService, private _router: Router) { }
 
   ngOnInit(): void {
     this.zones$ = this._adress.getLocations();
@@ -65,6 +66,9 @@ export class OrderComponent implements OnInit {
   order() {
     let cart: Panier = JSON.parse(localStorage.getItem('panier') || '{}');
     cart.quartier = this.selectQuartier;
-    this._orderService.sendOrder(cart).subscribe(console.log);
+    this._orderService.sendOrder(cart).subscribe();
+    localStorage.removeItem('panier');
+    localStorage.removeItem('produits');
+    this._router.navigateByUrl('/client/commande');
   }
 }

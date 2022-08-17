@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../shared/services/cart.service';
-import { OrderService } from '../../shared/services/order.service';
+import { OrderService } from '../../../shared/services/order.service';
 import { PriceService } from '../../shared/services/price.service';
 
 @Component({
@@ -19,7 +19,7 @@ export class ResumeComponent implements OnInit {
   }
 
   submitOrder(): void {
-    if (localStorage.getItem('user') === null) {
+    if (localStorage.getItem('token') === null) {
       this._router.navigateByUrl('/auth/login');
     } else {
       this._orderService.makeCart(this._cartService.getProducts());

@@ -41,6 +41,10 @@ export class AuthenticationService {
     );
   }
 
+  logout() {
+    localStorage.clear();
+  }
+
   saveUser(token: any) {
     let payload = token.split('.')[1];
     let userData = JSON.parse(atob(payload));
