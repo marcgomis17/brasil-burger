@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Produit } from 'src/app/shared/models/produit';
-import { Added } from '../models/added';
-import { CartService } from '../services/cart.service';
+import { Added } from '../../models/added';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'mog-counter',
