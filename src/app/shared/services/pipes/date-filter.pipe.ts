@@ -10,6 +10,7 @@ export class DateFilterPipe implements PipeTransform {
     newArr = value.sort((a, b) => {
       return <any>new Date(a['dateCommande']) - <any>new Date(b['dateCommande']);
     });
+
     if (order === "default") {
       return value;
     }
