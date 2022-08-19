@@ -53,4 +53,8 @@ export class OrderService {
     const params = new HttpParams().set('id', id);
     return this._http.get<any>(`${baseUrl}clients/${id}/commandes`, { params: params });
   }
+
+  getAllOrders() {
+    return this._http.get<any>(this._orderUrl);
+  }
 }
