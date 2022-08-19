@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
-import { Panier } from 'src/app/client/shared/models/panier';
+import { Roles } from 'src/app/authentication/services/roles';
 import { User } from '../models/user';
-import { OrderService } from '../services/order.service';
+import { AdressService } from '../services/adress.service';
 
 @Component({
   selector: 'mog-order-list',
@@ -11,18 +11,31 @@ import { OrderService } from '../services/order.service';
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
-  private _user: User | undefined;
-  orders: [] = [];
+  @Input() orders: [] = [];
+  @Input() statusFilterValue: string | undefined = "En cours";
+  zones$: Observable<any> | undefined = undefined;
+  dateFilterValue: string = "";
+  zoneFilterValue: number = 0;
+  user: User | any;
+  roles: Roles | any;
+  orderFilter: string = "";
 
-  constructor(private _orderService: OrderService, private _auth: AuthenticationService) { }
+  constructor(private _auth: AuthenticationService, private _adress: AdressService) { }
 
   ngOnInit(): void {
-    this._user = this._auth.getUser();
-    this._orderService.getClientOrder(this._user?.id).pipe(
-      map((res) => {
-        this.orders = res['hydra:member'];
-        console.log(this.orders);
-      })
-    ).subscribe();
+    this.user = this._auth.getUser();
+    this.zones$ = this._adress.getLocations();
+  }
+
+  getStatusFilterValue(select: any) {
+    this.statusFilterValue = select.target.value;
+  }
+
+  getDateFilterValue(select: any) {
+    this.dateFilterValue = select.target.value;
+  }
+
+  getZoneFilterValue(select: any) {
+    this.zoneFilterValue = parseInt(select.target.value);
   }
 }

@@ -1,10 +1,48 @@
 <div id="container" class="container">
     <p class="title">Mes commandes</p> <!-- TODO: Put title class -->
     <div id="order-board-wrapper">
+        <div id="filters">
+            <div id="select-filters">
+                <div class="filter" id="status-filter-select">
+                    <label for="status-filter-select">Etat</label>
+                    <select class="form-select" (change)="getStatusFilterValue($event)">
+                        <option value="En cours" [selected]="statusFilterValue==='En cours'">En cours</option>
+                        <option value="Annulée">Annulée</option>
+                        <option value="Terminée" [selected]="statusFilterValue==='Terminée'">Terminée</option>
+                    </select>
+                </div>
+                <div class="filter" id="date-filter-select">
+                    <label for="date-filter-select">Date</label>
+                    <select class="form-select" (change)="getDateFilterValue($event)">
+                        <option value="default" selected>Filtrer par date</option>
+                        <option value="asc">Plus récent</option>
+                        <option value="desc">Plus ancien</option>
+                    </select>
+                </div>
+                <ng-container *ngIf="user?.roles[0]==='ROLE_GESTIONNAIRE'">
+                    <div class="filter" id="zone-filter-select">
+                        <label for="">Zone</label>
+                        <select class="form-select" (change)="getZoneFilterValue($event)">
+                            <option value="0" selected>Filtrer par zone</option>
+                            <ng-container *ngFor="let zone of (zones$|async)['hydra:member']">
+                                <option value="{{zone.id}}">{{zone.nom}}</option>
+                            </ng-container>
+                        </select>
+                    </div>
+                </ng-container>
+            </div>
+            <ng-container *ngIf="user?.roles[0]==='ROLE_GESTIONNAIRE'">
+                <div id="search-filter">
+                    <label for=""></label>
+                    <input type="text" name="orderFilter" class="form-control filter" id="order-search-field" placeholder="Numéro de commande" [(ngModel)]="orderFilter">
+                </div>
+            </ng-container>
+        </div>
         <div id="order-board">
             <table class="table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>ID Commande</th>
                         <th>Date</th>
                         <th>Total</th>
@@ -13,17 +51,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <ng-container *ngFor="let order of orders">
-                        <tr>
-                            <td scope="row">{{order['numeroCommande']}}</td>
-                            <td scope="row">{{order['dateCommande']|date:'dd.MM.yyyy'}} <span id="order-hour">{{order['dateCommande']|date:'HH:mm'}}</span></td>
-                            <td scope="row">{{order['prixTotal']|currency:'XOF'}}</td>
-                            <td scope="row">{{order['etat']}}</td>
-                            <td scope="row" id="actions">
-                                <button class="action-btn icon-btn btn btn-success"><img src="assets/icons/detail.svg" alt="" class="btn-icon"><span>Détails</span></button>
-                                <button class="action-btn icon-btn btn btn-danger"><img src="assets/icons/stop.svg" alt="" class="btn-icon"><span>Annuler</span></button>
-                            </td>
-                        </tr>
+                    <ng-container *ngIf="(orders|etat:statusFilterValue|dateFilter:dateFilterValue|zone:zoneFilterValue|search:orderFilter) as orders">
+                        <ng-container *ngFor="let order of orders">
+                            <tr>
+                                <td><input class="form-check-input" type="checkbox" value="" id="order-check"></td>
+                                <td scope="row">{{order['numeroCommande']}}</td>
+                                <td scope="row">{{order['dateCommande']|date:'dd.MM.yyyy'}} <span id="order-hour">{{order['dateCommande']|date:'HH:mm'}}</span></td>
+                                <td scope="row">{{order['prixTotal']|currency:'XOF'}}</td>
+                                <td scope="row">
+                                    <div id="etat-display" class="status" [ngClass]="{'en-cours':order['etat']==='En cours', 'termine': order['etat']==='Terminée', 'annule': order['etat']==='Annulée'}">{{order['etat']}}</div>
+                                </td>
+                                <td scope="row" id="actions">
+                                    <button class="action-btn icon-btn btn btn-success"><img src="assets/icons/detail.svg" alt="" class="btn-icon"><span>Détails</span></button>
+                                    <button class="action-btn icon-btn btn btn-danger" [disabled]="order['etat']==='Annulée'"><img src="assets/icons/stop.svg" alt="" class="btn-icon"><span>Annuler</span></button>
+                                </td>
+                            </tr>
+                        </ng-container>
                     </ng-container>
                 </tbody>
             </table>
