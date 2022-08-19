@@ -5,6 +5,9 @@ import { RouterModule } from '@angular/router';
 import { OrderListComponent } from './order-list/order-list.component';
 import { EtatPipe } from './services/pipes/etat.pipe';
 import { DateFilterPipe } from './services/pipes/date-filter.pipe';
+import { FormsModule } from '@angular/forms';
+import { ZonePipe } from './services/pipes/zone.pipe';
+import { SearchPipe } from './services/pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -12,10 +15,13 @@ import { DateFilterPipe } from './services/pipes/date-filter.pipe';
     OrderListComponent,
     EtatPipe,
     DateFilterPipe,
+    ZonePipe,
+    SearchPipe,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     RouterModule,

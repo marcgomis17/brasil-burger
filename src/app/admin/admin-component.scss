@@ -1,3 +1,7 @@
+#main-container{
+    margin-top: 10vh;
+}
+
 header {
     background: #1a1a1a;
     display: flex;
@@ -43,7 +47,7 @@ header {
 
 #side-bar {
     width: 20%;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;

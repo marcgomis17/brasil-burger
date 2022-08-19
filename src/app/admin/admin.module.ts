@@ -6,12 +6,13 @@ import { AdminSharedModule } from './shared/shared.module';
 import { SharedModule } from '../shared/shared.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin-component';
-
+import { CommandesComponent } from './commandes/commandes.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    CommandesComponent
   ],
   imports: [
     CommonModule,

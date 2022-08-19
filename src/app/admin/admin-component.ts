@@ -3,7 +3,7 @@ import { AuthenticationService } from "../authentication/services/authentication
 import { User } from "../shared/models/user";
 
 @Component({
-    selector: 'admin-component',
+    selector: 'admin-layout',
     templateUrl: './admin-component.html',
     styleUrls: ['./admin-component.scss'],
 })

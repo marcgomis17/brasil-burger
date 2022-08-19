@@ -1,5 +1,21 @@
 <div id="container" class="container">
-    <p class="title">Mes commandes</p> <!-- TODO: Put title class -->
+    <div id="head">
+        <p class="title">Mes commandes</p>
+        <div id="livraison">
+            <div id="select-wrapper">
+                <label for="">Livreur</label>
+                <select class="form-select" (change)="getLivreur($event)">
+                    <option value="0">jkvncosln</option>
+                    <ng-container *ngFor="let livreur of (livreurs$|async)['hydra:member']">
+                        <ng-container *ngIf="livreur.etat===true">
+                            <option value="{{livreur.id}}">{{livreur.prenom}} {{livreur.nom}}</option>
+                        </ng-container>
+                    </ng-container>
+                </select>
+            </div>
+            <button class="btn btn-warning" (click)="makeDeliver()">Livrer</button>
+        </div>
+    </div>
     <div id="order-board-wrapper">
         <div id="filters">
             <div id="select-filters">
@@ -53,8 +69,8 @@
                 <tbody>
                     <ng-container *ngIf="(orders|etat:statusFilterValue|dateFilter:dateFilterValue|zone:zoneFilterValue|search:orderFilter) as orders">
                         <ng-container *ngFor="let order of orders">
-                            <tr>
-                                <td><input class="form-check-input" type="checkbox" value="" id="order-check"></td>
+                            <tr id="order-row">
+                                <td><input class="form-check-input" type="checkbox" value="{{order['id']}}" id="order-check" (change)="getOrder($event)"></td>
                                 <td scope="row">{{order['numeroCommande']}}</td>
                                 <td scope="row">{{order['dateCommande']|date:'dd.MM.yyyy'}} <span id="order-hour">{{order['dateCommande']|date:'HH:mm'}}</span></td>
                                 <td scope="row">{{order['prixTotal']|currency:'XOF'}}</td>
@@ -63,7 +79,7 @@
                                 </td>
                                 <td scope="row" id="actions">
                                     <button class="action-btn icon-btn btn btn-success"><img src="assets/icons/detail.svg" alt="" class="btn-icon"><span>Détails</span></button>
-                                    <button class="action-btn icon-btn btn btn-danger" [disabled]="order['etat']==='Annulée'"><img src="assets/icons/stop.svg" alt="" class="btn-icon"><span>Annuler</span></button>
+                                    <button class="action-btn icon-btn btn btn-danger" [disabled]="order['etat']==='Annulée' || order['etat']==='Terminée'"><img src="assets/icons/stop.svg" alt="" class="btn-icon"><span>Annuler</span></button>
                                 </td>
                             </tr>
                         </ng-container>

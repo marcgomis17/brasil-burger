@@ -14,6 +14,14 @@ body {
     min-height: 95vh;
 }
 
+.content-wrapper {
+    position: absolute;
+    top: 0;
+    right: 2%;
+    bottom: 0;
+    left: 22%;
+}
+
 .button {
     height: 40px;
     background-color: #ffcc00;
@@ -85,7 +93,7 @@ body {
     color: red;
 }
 
-.buttonn {
+.buttonn-default {
     height: 40px;
     border: none;
     border-radius: 5px;
@@ -95,4 +103,30 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    column-gap: 10%;
+}
+
+// Order classes
+.status {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.en-cours {
+    color: #EDBD11;
+    background-color: #edbd1140;
+}
+
+.termine {
+    color: #3EB000;
+    background-color: #3eb00054;
+}
+
+.annule {
+    color: #FF0707;
+    background-color: #ff07073b;
 }
